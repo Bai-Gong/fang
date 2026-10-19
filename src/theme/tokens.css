@@ -1,0 +1,61 @@
+/**
+ * 百工·坊 设计 token —— 深色为 :root 默认主题（产品分析既定事实，亮色主题在 roadmap）。
+ *
+ * 对外消费入口：import '@baigong/fang/tokens.css'（主入口不注入样式，这是刻意约定，
+ * 见 docs/工程骨架决策.md）；包内 demo/tests 经 src 直接导入。
+ *
+ * 与 tokens.ts 的变量名一致性由 tests/tokens.test.ts 锁定：修改任一端必须同步另一端。
+ */
+:root {
+  /* —— 色板：中性（深色基底） —— */
+  --fang-color-bg: #1e1f22;
+  --fang-color-bg-raised: #26282c;
+  --fang-color-bg-overlay: #2e3136;
+  --fang-color-border: #3a3d43;
+  --fang-color-border-strong: #4a4e55;
+  --fang-color-text: #e4e6eb;
+  --fang-color-text-secondary: #a8adb8;
+  --fang-color-text-muted: #767c88;
+
+  /* —— 色板：功能色 —— */
+  --fang-color-accent: #4f8cff;
+  --fang-color-accent-hover: #6b9eff;
+  --fang-color-accent-active: #3d76e6;
+  --fang-color-danger: #e5534b;
+  --fang-color-warning: #d4a72c;
+  --fang-color-success: #57ab5a;
+  --fang-color-selected: rgba(79, 140, 255, 0.22);
+  --fang-color-hover: rgba(255, 255, 255, 0.06);
+
+  /* —— 间距：4px 基准 —— */
+  --fang-space-1: 4px;
+  --fang-space-2: 8px;
+  --fang-space-3: 12px;
+  --fang-space-4: 16px;
+  --fang-space-5: 24px;
+  --fang-space-6: 32px;
+
+  /* —— 字号 —— */
+  --fang-font-size-xs: 11px;
+  --fang-font-size-sm: 12px;
+  --fang-font-size-md: 13px;
+  --fang-font-size-lg: 15px;
+  --fang-font-size-xl: 18px;
+
+  /* —— 字体族 —— */
+  --fang-font-family: system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  --fang-font-mono: ui-monospace, SFMono-Regular, Consolas, "Courier New", monospace;
+
+  /* —— z-index 层级（dock 之上逐层抬升） —— */
+  --fang-z-base: 0;
+  --fang-z-dock: 10;
+  --fang-z-dropdown: 100;
+  --fang-z-overlay: 1000;
+  --fang-z-tooltip: 1100;
+  --fang-z-modal: 1200;
+
+  /* —— 圆角 —— */
+  --fang-radius-sm: 3px;
+  --fang-radius-md: 5px;
+  --fang-radius-lg: 8px;
+}

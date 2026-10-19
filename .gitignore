@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist-demo/
+coverage/
+
+# 门禁 runner 以 fang/fang 为包根的兼容跳板目录（说明见 fang/fang/README.md 与 docs/工程骨架决策.md「施工附注」），非包内容，不入库
+/fang/
+
+# smoke 是自包含可重装的验收工程，装出的依赖与锁文件不入库
+/smoke/node_modules/
+/smoke/package-lock.json
