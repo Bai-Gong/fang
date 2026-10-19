@@ -1,0 +1,12 @@
+{
+  "name": "@baigong/fang-smoke",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "百工·坊 自包含消费验收工程：以 file: 链接安装本包并验证对外交付面",
+  "dependencies": {
+    "@baigong/fang": "file:..",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
