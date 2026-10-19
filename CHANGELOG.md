@@ -2,6 +2,10 @@
 
 本包遵循 semver。0.x 阶段 minor 版本即允许破坏性变更，破坏点在此逐条记录。
 
+## 未发布
+
+- 新增 GitLab CI：push 到 `develop` / `qa` 及目标为二者的 MR 触发全量门禁流水线（`npm ci` → `check` → `smoke`）；`qa` 分支额外产出试用 tarball 制品（不改版本号、不发布 registry）。`main` 流水线（正式版打包 / registry 发布）整体推迟。包代码与公共 API 无变化。
+
 ## 0.1.0 — 2026-10-19
 
 首版工程骨架（`@baigong/fang`，private，ESM-only）：

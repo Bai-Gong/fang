@@ -1,0 +1,58 @@
+# 百工·坊 GitLab CI —— 仅 develop / qa 的门禁流水线。
+# 刻意范围：push 到 main 不设流水线（正式版打包 / registry 发布整体推迟，
+# 决策留档见 docs/工程骨架决策.md「八、CI 流水线决策」）。
+
+stages:
+  - gate
+  - pack
+
+workflow:
+  rules:
+    # push 流水线只认 develop / qa
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+    - if: '$CI_COMMIT_BRANCH == "qa"'
+    # 目标为 develop / qa 的 MR 在合并 ref 上跑同一套门禁
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^(develop|qa)$/'
+
+# 所有 npm 调用（含 smoke 的 --prefix 安装）共用项目内缓存目录
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+
+default:
+  image: node:22-bookworm-slim
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+  interruptible: true
+
+# 全量门禁：与本地完全同链（npm ci → check → smoke），不拆多作业。
+# smoke 必须与 check 同作业：verify.mjs ① 经 realpath 从仓库根解析外置 react，
+# 需要根 node_modules 与 dist 同时在场。
+gate:
+  stage: gate
+  script:
+    - npm ci --prefer-offline
+    - npm run check
+    - npm run smoke
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 3 days
+    when: always
+
+# QA 试用包：qa 分支推送时以当前版本号打 tgz 制品，供测试侧 npm i <tgz> 试用。
+# 刻意不做：版本号变更、registry 发布——属 main 流水线（正式发布）职责，整体推迟。
+qa-pack:
+  stage: pack
+  needs: [gate]
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "qa"'
+  script:
+    - npm pack --pack-destination .
+  artifacts:
+    paths:
+      - ./*.tgz
+    expire_in: 14 days

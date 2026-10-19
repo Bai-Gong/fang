@@ -27,6 +27,7 @@
 
 - 目录速览：`src/theme`（token 双源 + ThemeProvider）、`src/commands`（keybinding 解析 + useHotkeys）、`src/dock`（DockHost / DockPanel）、`src/ui`（通用控件占位）、`demo/`、`tests/`、`smoke/`、`scripts/postbuild.mjs`。
 - 仓库里另有一个 `fang/fang/` 子目录：**门禁 runner 的兼容跳板，不是嵌套包、不属包内容**（runner 固定以 `<项目目录>/<项目名>` 为包根执行 `npm run build`）。缘由与删除条件见 [`fang/fang/README.md`](fang/README.md) 与 [docs/工程骨架决策.md](docs/工程骨架决策.md)「施工附注」；已通过 `.gitignore` 排除出版本库。
+- CI（GitLab）：push 到 `develop` / `qa` 及目标为二者的 MR 触发门禁流水线（`npm ci` → `check` → `smoke`，与本地同链）；`qa` 分支额外产出试用 tarball 制品（`npm i <tgz>`，不发布 registry）。`main` 暂无流水线——正式版打包/发布推迟，见 [docs/工程骨架决策.md](docs/工程骨架决策.md)「八、CI 流水线决策」。
 - 版本纪律：semver，0.x 期间 minor 即允许破坏，破坏点记 [CHANGELOG.md](CHANGELOG.md)。
 
 ## 消费方式
