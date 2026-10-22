@@ -31,3 +31,12 @@ export {
   trackClickToScroll,
   type ThumbMetrics,
 } from "./ui/scrollbarGeometry";
+
+export { TitleBar, TITLEBAR_HEIGHT_PX, type TitleBarProps } from "./ui/TitleBar";
+export {
+  installWindowAdapter,
+  uninstallWindowAdapter,
+  getWindowAdapter,
+  type WindowAdapter,
+} from "./ui/windowAdapter";
+export { defaultMenus, type DefaultMenuActions, type MenuEntry, type MenuItemDef } from "./ui/menu";

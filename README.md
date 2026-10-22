@@ -25,7 +25,7 @@
 | `npm run smoke` | 消费验收（独立于 check 链）。**前置：先跑过 `npm run build`**——本包 exports 全部指向 `dist/`（package.json），新克隆后只 `npm install` 就跑 smoke 会在第①步 import 失败。所谓「自包含」指 `smoke/` 是自带 `package.json`、可独立重装的子工程（其 `node_modules` 与锁文件不入库，见 `.gitignore`）；验收内容：`file:` 安装后 node 侧 import 主入口 / resolve tokens.css / 断言 d.ts / 记录链接形态 |
 | `npm run dev` | demo 站（`demo/`，主题 / 停靠 / 快捷键三块演示，经 `src` 直接消费） |
 
-- 目录速览：`src/theme`（token 双源 + ThemeProvider）、`src/commands`（keybinding 解析 + useHotkeys）、`src/dock`（DockHost / DockPanel）、`src/ui`（通用控件：ScrollArea 自绘滚动条）、`demo/`、`tests/`、`smoke/`、`scripts/postbuild.mjs`。
+- 目录速览：`src/theme`（token 双源 + ThemeProvider）、`src/commands`（keybinding 解析 + useHotkeys）、`src/dock`（DockHost / DockPanel）、`src/ui`（通用控件：ScrollArea 自绘滚动条、TitleBar 应用标题栏）、`demo/`、`tests/`、`smoke/`、`scripts/postbuild.mjs`。
 - 仓库里另有一个 `fang/fang/` 子目录：**门禁 runner 的兼容跳板，不是嵌套包、不属包内容**（runner 固定以 `<项目目录>/<项目名>` 为包根执行 `npm run build`）。缘由与删除条件见 [`fang/fang/README.md`](fang/README.md) 与 [docs/工程骨架决策.md](docs/工程骨架决策.md)「施工附注」；已通过 `.gitignore` 排除出版本库。
 - CI（GitLab）：push 到 `develop` / `qa` 及目标为二者的 MR 触发门禁流水线（`npm ci` → `check` → `smoke`，与本地同链）；`qa` 分支额外产出试用 tarball 制品（`npm i <tgz>`，不发布 registry）。`main` 暂无流水线——正式版打包/发布推迟，见 [docs/工程骨架决策.md](docs/工程骨架决策.md)「八、CI 流水线决策」。
 - 版本纪律：semver，0.x 期间 minor 即允许破坏，破坏点记 [CHANGELOG.md](CHANGELOG.md)。

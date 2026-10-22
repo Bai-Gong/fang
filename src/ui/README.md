@@ -10,3 +10,6 @@
 - `ScrollArea`：自绘滚动条滚动容器。需求方：剪（jian）时间线/素材池——WebView2 原生
   滚动条与深色外壳割裂、占 17px 布局宽。视口经 `onViewportChange` 回调交付（回调 ref
   语义；勿用 ref 对象转发给子组件，挂载帧读到的是 null）。
+- `TitleBar`：应用标题栏（菜单栏＋窗口三键＋拖动区），配 `menu`（纯数据菜单模型，
+  `defaultMenus` 给通用默认项、应用增删）与 `windowAdapter`（窗口动作注入层，坊不
+  直接依赖 Tauri）。需求方：剪——`decorations: false` 后的应用级窗口外壳。

@@ -7,6 +7,7 @@ import { DockDemo } from "./blocks/DockDemo";
 import { HotkeysDemo } from "./blocks/HotkeysDemo";
 import { ScrollAreaDemo } from "./blocks/ScrollAreaDemo";
 import { ThemeDemo } from "./blocks/ThemeDemo";
+import { TitleBarDemo } from "./blocks/TitleBarDemo";
 
 const root = document.getElementById("root");
 if (!root) {
@@ -38,6 +39,7 @@ createRoot(root).render(
         <DockDemo />
         <HotkeysDemo />
         <ScrollAreaDemo />
+        <TitleBarDemo />
       </main>
     </ThemeProvider>
   </StrictMode>,
