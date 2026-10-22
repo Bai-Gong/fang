@@ -5,6 +5,7 @@ import "../src/theme/tokens.css";
 import { ThemeProvider } from "../src";
 import { DockDemo } from "./blocks/DockDemo";
 import { HotkeysDemo } from "./blocks/HotkeysDemo";
+import { ScrollAreaDemo } from "./blocks/ScrollAreaDemo";
 import { ThemeDemo } from "./blocks/ThemeDemo";
 
 const root = document.getElementById("root");
@@ -30,12 +31,13 @@ createRoot(root).render(
         <h1 style={{ fontSize: "var(--fang-font-size-xl)", margin: 0 }}>
           百工·坊 demo
           <span style={{ fontSize: "var(--fang-font-size-sm)", color: "var(--fang-color-text-muted)", marginLeft: "var(--fang-space-3)" }}>
-            主题 / 停靠 / 快捷键
+            主题 / 停靠 / 快捷键 / 滚动条
           </span>
         </h1>
         <ThemeDemo />
         <DockDemo />
         <HotkeysDemo />
+        <ScrollAreaDemo />
       </main>
     </ThemeProvider>
   </StrictMode>,

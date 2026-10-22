@@ -22,3 +22,12 @@ export { useHotkeys, type HotkeyHandler, type UseHotkeysOptions } from "./comman
 
 export { DockHost, type DockHostProps, type DockSide } from "./dock/DockHost";
 export { DockPanel, type DockPanelProps } from "./dock/DockPanel";
+
+export { ScrollArea, SCROLLBAR_TRACK_PX, type ScrollAreaProps, type ScrollOrientation } from "./ui/ScrollArea";
+export {
+  dragToScroll,
+  MIN_THUMB_PX,
+  thumbMetrics,
+  trackClickToScroll,
+  type ThumbMetrics,
+} from "./ui/scrollbarGeometry";
