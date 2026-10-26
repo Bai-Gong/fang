@@ -15,6 +15,16 @@ describe("ThemeProvider", () => {
     expect(host?.textContent).toBe("内容");
   });
 
+  it("主题载体承担满高布局（height:100%），不断工具外壳的高度链", () => {
+    const { container } = render(
+      <ThemeProvider>
+        <p>内容</p>
+      </ThemeProvider>,
+    );
+    const host = container.querySelector<HTMLElement>(".fang-theme-dark");
+    expect(host?.style.height).toBe("100%");
+  });
+
   it("useFangTheme 在 Provider 内读到 dark", () => {
     let seen: string | undefined;
     function Probe() {
